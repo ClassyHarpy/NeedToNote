@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/component/_stopwatch.scss') }}">
+    <link rel="stylesheet" href="{{ asset('styles/layout/_topbar.scss') }}">
+    <link rel="stylesheet" href="{{ asset('styles/layout/_sidebar.scss') }}">
+	<link rel="stylesheet" href="{{ asset('styles/index/_index.scss') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/component/Stopwatch.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+	<div id="index">
+		{% include 'layout/topbar.html.twig' %}
+		{% include 'layout/sidebar.html.twig' %}
+        {% include 'component/stopwatch.html.twig' %}
+
+		<div id="main">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+{% endblock %}

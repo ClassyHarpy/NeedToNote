@@ -1,0 +1,15 @@
+#sidebar {
+    height: 100vh;
+
+    .sidebar-content {
+        flex: 1;
+
+        &-notebooks, &-websites  {
+            flex: inherit;
+        }
+    }
+
+    .sidebar-bottom {
+        gap: 1em;
+    }
+}

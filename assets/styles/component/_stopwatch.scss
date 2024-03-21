@@ -1,0 +1,12 @@
+#stopwatch {
+    border: 1px solid var(--borders);
+    box-shadow: 2px 2px 5px #00000043;
+    border-radius: 10px;
+    user-select: none;
+    transition: 100ms ease-in-out opacity;
+    opacity: 0;
+
+    &.active {
+        opacity: 1;
+    }
+}

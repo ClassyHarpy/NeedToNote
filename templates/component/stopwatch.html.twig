@@ -1,0 +1,11 @@
+{% block stopwatch %}
+	<div id="stopwatch" class="d-flex flex-column position-absolute p-2 bg-white" style="left: 80%; top: 80%;">
+		<h3 class="text-center text-primary">Stopwatch</h3>
+		<h3 id="stopwatch-counter" class="text-center text-dark">00:00</h3>
+		<div class="d-flex gap-2">
+			<button id="reset" class="btn btn-danger">Reset</button>
+			<button id="stop" class="btn btn-danger ml-2">Stop</button>
+			<button id="start" class="btn btn-success ml-2">Start</button>
+		</div>
+	</div>
+{% endblock %}
