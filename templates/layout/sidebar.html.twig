@@ -1,35 +1,43 @@
 {% block sidebar %}
 	<div id="sidebar" class="d-flex flex-column component border-top-0">
-		<div class="sidebar-top p-3 border-bottom border-1">
-			<h4>{{ user|default(":(") }}</h4>
-			<div class="input-group d-flex">
-				<span class="input-group-text rounded-start" id="addon-wrapping"><img src="/imgs/search-symbol.png" alt="search" style="height: 15px; width: 15px;"></span>
-				<input type="text" class="form-control ml-2" placeholder="search" aria-label="Username" aria-describedby="addon-wrapping">
-			</div>
-		</div>
-
-		<div class="sidebar-content d-flex flex-column border-bottom border-1">
-			<div class="sidebar-content-notebooks p-3 border-bottom border-1">
-				<h5>Notebooks</h5>
-				<div class="sidebar-links">
-					<div class="sidebar-link">
-						<h6>Test</h6>
+		{% block sidebar_inner %}
+			{% block sidebar_top %}
+				<div class="sidebar-top p-3 border-bottom border-1">
+					<h4>{{ Context.user.name }}</h4>
+					<div class="input-group d-flex">
+						<span class="input-group-text rounded-start" id="addon-wrapping"><img src="/imgs/search-symbol.png" alt="search" style="height: 15px; width: 15px;"></span>
+						<input type="text" class="form-control ml-2" placeholder="search" aria-label="Username" aria-describedby="addon-wrapping">
 					</div>
 				</div>
-			</div>
-			<div class="sidebar-content-websites p-3">
-				<h5>Websites</h5>
-				<div class="sidebar-links">
-					<div class="sidebar-link">
-						<h6>Test</h6>
+			{% endblock %}
+
+			{% block sidebar_content %}
+				<div class="sidebar-content d-flex flex-column border-bottom border-1">
+					<div class="sidebar-content-notebooks p-3 border-bottom border-1">
+						<h5>Notebooks</h5>
+						<div class="sidebar-links">
+							<div class="sidebar-link">
+								<h6>Test</h6>
+							</div>
+						</div>
+					</div>
+					<div class="sidebar-content-websites p-3">
+						<h5>Websites</h5>
+						<div class="sidebar-links">
+							<div class="sidebar-link">
+								<h6>Test</h6>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			{% endblock %}
 
-		<div class="sidebar-bottom d-flex justify-content-center p-3">
-			<a href={{ path("app.calendar") }} class="btn btn-primary"><img src="/imgs/calendar.svg"></a>
-			<button id="showWatch" class="btn btn-primary"><img src="/imgs/stopwatch.svg"></button>
-		</div>
+			{% block sidebar_bottom %}
+				<div class="sidebar-bottom d-flex justify-content-center p-3">
+					<a href={{ path("app.calendar") }} class="btn btn-primary"><img src="/imgs/calendar.svg"></a>
+					<button id="showWatch" class="btn btn-primary"><img src="/imgs/stopwatch.svg"></button>
+				</div>
+			{% endblock %}
+		{% endblock %}
 	</div>
 {% endblock %}

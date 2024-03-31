@@ -1,8 +1,8 @@
 #index {
     height: inherit;
     display: grid;
-    grid-template-columns: 200px repeat(4, 1fr);
-    grid-template-rows: .35fr repeat(4, 1fr);
+    grid-template-columns: 250px repeat(4, 1fr);
+    grid-template-rows: 9% repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
@@ -16,5 +16,6 @@
 }
 
 #main {
+    max-height: calc(100vh - 9%);
     grid-area: 2 / 2 / 6 / 6;
 }

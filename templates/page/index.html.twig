@@ -3,6 +3,7 @@
 {% block stylesheets %}
 	{{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/component/_stopwatch.scss') }}">
+	    <link rel="stylesheet" href="{{ asset('styles/component/_calendar.scss') }}">
     <link rel="stylesheet" href="{{ asset('styles/layout/_topbar.scss') }}">
     <link rel="stylesheet" href="{{ asset('styles/layout/_sidebar.scss') }}">
 	<link rel="stylesheet" href="{{ asset('styles/index/_index.scss') }}">
@@ -19,7 +20,7 @@
 		{% include 'layout/sidebar.html.twig' %}
         {% include 'component/stopwatch.html.twig' %}
 
-		<div id="main">
+		<div id="main" class="p-3">
 			{% block content %}{% endblock %}
 		</div>
 	</div>
