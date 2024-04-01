@@ -7,24 +7,28 @@
 
 {% block body %}
 	<div id="auth" class="d-grid">
-		{% embed "layout/sidebar.html.twig" with { "href": "href", "href_content": "sawda" } %}
-			{% block sidebar_inner %}
-				<div class="d-flex flex-column h-100 p-5">
-					<div class="d-flex flex-column flex-fill align-items-center justify-content-center">
-						<h1 class="text-primary mb-4">Need to Note</h1>
-						<p class="text-white text-center">"Education is what remains after one has forgotten everything he learned in school"
-																																	~Albert Einstein</p>
-					</div>
+		{% set href = "#" %}
+		{% set href_content = "" %}
 
-					<div class="d-flex flex-fill align-items-center justify-content-center">
-						<a class="btn btn-primary" href="{{ href }}">
-							{{ href_content }}
-						</a>
-					</div>
-				</div>
-			{% endblock %}
-		{% endembed %}
+		{% block auth_sidebar %}
+			{% embed "layout/sidebar.html.twig" with { "href": href, "href_content": href_content } %}
+				{% block sidebar_inner %}
+					<div class="d-flex flex-column h-100 p-5">
+						<div class="d-flex flex-column flex-fill align-items-center justify-content-center">
+							<h1 class="text-primary mb-4">Need to Note</h1>
+							<p class="text-white text-center">"Education is what remains after one has forgotten everything he learned in school"
+																																																																								~Albert Einstein</p>
+						</div>
 
+						<div class="d-flex flex-fill align-items-center justify-content-center">
+							<a class="btn btn-primary" href="{{ href }}">
+								{{ href_content }}
+							</a>
+						</div>
+					</div>
+				{% endblock %}
+			{% endembed %}
+		{% endblock %}
 		<div class="d-flex align-items-center justify-content-center ">
 			{% block auth_content %}{% endblock %}
 		</div>

@@ -1,23 +1,32 @@
-<?php 
+<?php
 
 namespace App\Controller;
 
+use App\Service\GuardService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
 
 class AppController extends AbstractController
 {
-    #[Route('/', name: 'app')]
-    public function app(): Response
+    public function __construct(private readonly GuardService $guardService)
     {
-        return $this->render('page/index.html.twig', ["routeName" => ""]);
+    }
+
+    #[Route('/', name: 'app')]
+    public function app(Request $request): Response
+    {
+        return $this->guardService->Guard(function () {
+            return $this->render('page/index.html.twig', ["routeName" => ""]);
+        }, $request);
     }
 
     #[Route('/calendar', name: 'app.calendar')]
-    public function calendar(): Response
+    public function calendar(Request $request): Response
     {
-        return $this->render('page/app/calendar.html.twig', ["routeName" => "Calendar"]);
+        return $this->guardService->Guard(function () {
+            return $this->render('page/app/calendar.html.twig', ["routeName" => "Calendar"]);
+        }, $request);
     }
 }

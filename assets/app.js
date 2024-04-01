@@ -1,4 +1,5 @@
-import './bootstrap.js';
-import './styles/app.css';
+import './styles/app.scss';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+import 'bootstrap/js/dist/alert';
+import 'jquery'
+import './bootstrap.js';

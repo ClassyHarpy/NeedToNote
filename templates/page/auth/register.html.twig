@@ -1,18 +1,41 @@
 {% extends "page/auth/index.html.twig" %}
 
-{% block auth_variables %}
-		{% set href = "" %}
-		{% set href_content = "sadasdasdasdsa" %}
-{% endblock %}
-
 {% block auth_btn %}
-	Already signed in?
+	I don't have an account
 {% endblock %}
 
-{% block auth_btn_href %}
-	{{ path("auth.login") }}
+{% block auth_sidebar %}
+	{% set href = path("auth.login") %}
+	{% set href_content = "Already signed in?" %}
+
+	{{ parent() }}
 {% endblock %}
 
 {% block auth_content %}
-asdSAD
+	<form class="bg-black p-5 rounded text-white" method="post" action="{{ path("auth.register.submit") }}">
+		<h2 class="text-center">Sign up</h2>
+
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" id="name" name="name" required placeholder="name">
+		</div>
+
+		<div class="form-group">
+			<label for="surname">Surname</label>
+			<input type="text" class="form-control" id="surname" name="surname" required placeholder="surname">
+		</div>
+
+
+		<div class="form-group">
+			<label for="email">Email address</label>
+			<input type="email" class="form-control" id="email" name="email" required placeholder="Enter email">
+		</div>
+
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" name="password" id="password" required placeholder="Password">
+		</div>
+
+		<button type="submit" class="btn btn-primary">Register</button>
+	</form>
 {% endblock %}

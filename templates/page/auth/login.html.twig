@@ -4,10 +4,24 @@
 	I don't have an account
 {% endblock %}
 
-{% block auth_btn_href %}
-	{{ path("auth.login") }}
+{% block auth_sidebar %}
+	{% set href = path("auth.register") %}
+	{% set href_content = "Need an account?" %}
+
+	{{ parent() }}
 {% endblock %}
 
 {% block auth_content %}
-asdSAD
+	<form class="bg-black p-5 rounded text-white" method="post" action="{{ path("auth.login.submit") }}">
+		<h2 class="text-center">Sign in</h2>
+		<div class="form-group">
+			<label for="email">Email address</label>
+			<input type="email" class="form-control" required id="email" name="email" placeholder="Enter email">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" required name="password" id="password" placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-primary">Login</button>
+	</form>
 {% endblock %}
