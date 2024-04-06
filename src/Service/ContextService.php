@@ -4,6 +4,7 @@ namespace App\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use App\Entity\MainNote;
 
 class ContextService
 {
@@ -16,5 +17,12 @@ class ContextService
     {
         
         return $this->entityManager->getRepository(User::class)->find(1);
+    }
+
+    /**
+     * @return MainNote[]
+     */
+    public function mainNotes(): array {
+        return $this->entityManager->getRepository(MainNote::class)->findAll();
     }
 }

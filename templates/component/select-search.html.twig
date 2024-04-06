@@ -1,0 +1,22 @@
+{% block select_search %}
+	<div class="select-search shadow">
+		<div role="button" class="select-search-btn form-select">
+			<span class="user-select-none">Select a notebook</span>
+		</div>
+		<div class="select-search-content p-2 py-3 bg-white mt-1 rounded-1 d-none">
+			<input type="title" class="select-search-input form-control mb-2" placeholder="Search...">
+			<div class="select-search-items overflow-x-auto">
+				<h6 data-select-not-found class="text-black m-0 fw-light d-none">No results matched "<span>:(</span>"</h6>
+				<div class="select-search-items-inner">
+					{% if Context.mainNotes|length %}
+						{% for note in Context.mainNotes %}
+							<h6 data-select-id={{ note.id }} class="select-search-item fw-light text-black">{{ note.title }}</h6>
+						{% endfor %}
+					{% else %}
+						<span>You did not create a notebook yet</span>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

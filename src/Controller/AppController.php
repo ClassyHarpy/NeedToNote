@@ -29,4 +29,12 @@ class AppController extends AbstractController
             return $this->render('page/app/calendar.html.twig', ["routeName" => "Calendar"]);
         }, $request);
     }
+
+    #[Route('/notes/add', name: 'app.notes.add')]
+    public function addNote(Request $request): Response
+    {
+        return $this->guardService->Guard(function () {
+            return $this->render('page/app/notes/add-note.html.twig', ["routeName" => "Notes"]);
+        }, $request);
+    }
 }

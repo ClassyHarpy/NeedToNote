@@ -1,0 +1,13 @@
+{% extends "page/index.html.twig" %}
+
+{% block content %}
+	<form class="bg-black p-5 rounded text-white" method="post" action="{{ path("auth.login.submit") }}">
+		<h2 class="text-center">Add note</h2>
+		<div class="form-group mb-3">
+			<label for="title">Email address</label>
+			<input type="title" class="form-control" required id="title" name="title" placeholder="Enter a title..." max="32">
+		</div>
+		{% include 'component/select-search.html.twig' %}
+		<button type="submit" class="btn btn-primary">Login</button>
+	</form>
+{% endblock %}

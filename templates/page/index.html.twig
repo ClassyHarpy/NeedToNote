@@ -2,23 +2,25 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-    <link rel="stylesheet" href="{{ asset('styles/component/_stopwatch.scss') }}">
-	    <link rel="stylesheet" href="{{ asset('styles/component/_calendar.scss') }}">
-    <link rel="stylesheet" href="{{ asset('styles/layout/_topbar.scss') }}">
-    <link rel="stylesheet" href="{{ asset('styles/layout/_sidebar.scss') }}">
+		<link rel="stylesheet" href="{{ asset('styles/component/_select-search.scss') }}">
+	<link rel="stylesheet" href="{{ asset('styles/component/_stopwatch.scss') }}">
+	<link rel="stylesheet" href="{{ asset('styles/component/_calendar.scss') }}">
+	<link rel="stylesheet" href="{{ asset('styles/layout/_topbar.scss') }}">
+	<link rel="stylesheet" href="{{ asset('styles/layout/_sidebar.scss') }}">
 	<link rel="stylesheet" href="{{ asset('styles/index/_index.scss') }}">
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/component/Stopwatch.js') }}" defer></script>
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/component/Stopwatch.js') }}" defer></script>
+	<script type="text/javascript" src="{{ asset('js/component/selectSearch.js') }}" defer></script>
 {% endblock %}
 
 {% block body %}
 	<div id="index">
 		{% include 'layout/topbar.html.twig' %}
 		{% include 'layout/sidebar.html.twig' %}
-        {% include 'component/stopwatch.html.twig' %}
+		{% include 'component/stopwatch.html.twig' %}
 
 		<div id="main" class="p-3">
 			{% block content %}{% endblock %}
