@@ -1,9 +1,5 @@
 {% extends "page/auth/index.html.twig" %}
 
-{% block auth_btn %}
-	I don't have an account
-{% endblock %}
-
 {% block auth_sidebar %}
 	{% set href = path("auth.login") %}
 	{% set href_content = "Already signed in?" %}

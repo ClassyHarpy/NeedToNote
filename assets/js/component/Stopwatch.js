@@ -98,4 +98,5 @@ class StopWatch {
     }
 }
 
+//Singleton
 const stopWatch = new StopWatch();

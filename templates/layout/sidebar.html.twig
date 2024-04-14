@@ -13,7 +13,7 @@
 
 			{% block sidebar_content %}
 				<div class="sidebar-content d-flex flex-column border-bottom border-1">
-					<div class="sidebar-content-notebooks position-relative p-3 border-bottom border-1">
+					<div class="sidebar-content-notebooks overflow-y-auto position-relative p-3 border-bottom border-1">
 						<h5 class="d-flex gap-2"><img src="/imgs/notebook.svg" loading="lazy"/>Notebooks</h5>
 						<ul class="sidebar-links">
 							{% for mainNote in Context.mainNotes %}
@@ -25,7 +25,7 @@
 
 						<a href="{{ path("app.notes.add") }}"><img role="button" class="position-absolute m-2 bottom-0 end-0" src="/imgs/add.svg" loading="lazy" /></a>
 					</div>
-					<div class="sidebar-content-websites p-3">
+					<div class="sidebar-content-websites overflow-y-auto p-3">
 						<h5>Websites</h5>
 						<div class="sidebar-links">
 							<div class="sidebar-link">

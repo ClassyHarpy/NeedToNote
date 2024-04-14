@@ -4,7 +4,9 @@
     .sidebar-content {
         flex: 1;
 
-        &-notebooks, &-websites  {
+        .sidebar-content-notebooks,
+        .sidebar-content-websites {
+            max-height: 350px;
             flex: inherit;
         }
     }

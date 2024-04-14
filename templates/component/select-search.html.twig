@@ -2,15 +2,16 @@
 	<div class="select-search shadow">
 		<div role="button" class="select-search-btn form-select">
 			<span class="user-select-none">Select a notebook</span>
+			<input class="opacity-0" autocomplete="off" type="text" required value="" name="select-search-id"/>
 		</div>
-		<div class="select-search-content p-2 py-3 bg-white mt-1 rounded-1 d-none">
+		<div class="select-search-content overflow-x-auto p-2 pt-3 pb-0 bg-white mt-1 rounded-1 d-none">
 			<input type="title" class="select-search-input form-control mb-2" placeholder="Search...">
-			<div class="select-search-items overflow-x-auto">
-				<h6 data-select-not-found class="text-black m-0 fw-light d-none">No results matched "<span>:(</span>"</h6>
+			<div class="select-search-items">
+				<h6 data-select-not-found="{{ path("app.notes.add-main") }}" class="select-search-item text-black m-0 fw-light d-none mb-2 p-2 rounded">Create note "<span>:(</span>"</h6>
 				<div class="select-search-items-inner">
 					{% if Context.mainNotes|length %}
 						{% for note in Context.mainNotes %}
-							<h6 data-select-id={{ note.id }} class="select-search-item fw-light text-black">{{ note.title }}</h6>
+							<h6 data-select-id={{ note.id }} class="select-search-item fw-light text-black p-2 rounded">{{ note.title }}</h6>
 						{% endfor %}
 					{% else %}
 						<span>You did not create a notebook yet</span>

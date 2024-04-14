@@ -39,7 +39,7 @@ class AuthController extends AbstractController
             $user =  $repository->findOneBy(["email" => $email, "password" => $hash]);
 
             if ($user) {
-                $this->addFlash("success", "Kevin todo message!!!!");
+                $this->addFlash("success", "You successfully logged into your account!");
 
                 $request->getSession()->set($_ENV["SESSION_COOKIE"], "test");
 
@@ -47,7 +47,7 @@ class AuthController extends AbstractController
             }
         }
 
-        $this->addFlash("danger", "Kevin todo message. Wtf wrong creds");
+        $this->addFlash("danger", "Incorrect credentials. Please try again!");
         return $this->redirect($this->generateUrl("auth.login"));
     }
 
@@ -71,13 +71,13 @@ class AuthController extends AbstractController
             $entityManagerInterface->persist($user);
             $entityManagerInterface->flush();
 
-            $this->addFlash("success", "Kevin todo message!!!!");
-
+            $this->addFlash("success", "You successfully created an account!");
+            
             $request->getSession()->set($_ENV["SESSION_COOKIE"], "test");
 
             return $this->redirect($this->generateUrl("app"));
         } else {
-            $this->addFlash("warning", "Kevin todo message");
+            $this->addFlash("warning", "An unexpected error has occurred. Please try again!");
             return $this->redirect($this->generateUrl("auth.register"));
         }
     }

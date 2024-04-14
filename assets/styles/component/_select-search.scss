@@ -1,7 +1,14 @@
 .select-search {
     .select-search-content {
-        .select-search-items {
-       //     min-height: 70px;
+        max-height: 200px;
+        
+        h6.select-search-item {
+            cursor: pointer;
+            transition: background-color 125ms ease-in-out;
+            
+            &:hover {
+                background-color: gray;
+            }
         }
     }
 }
