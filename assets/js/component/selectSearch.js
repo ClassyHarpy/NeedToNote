@@ -102,6 +102,8 @@ class selectSearchClass {
 
                 target.parentNode.querySelector(".select-search-items-inner").appendChild(mainNoteElement);
             }).catch(console.error)
+
+
     }
 }
 

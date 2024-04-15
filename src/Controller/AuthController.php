@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class AuthController extends AbstractController
 {
     #[Route('/login', name: 'auth.login')]
-    public function login(Request $request): Response
+    public function login(): Response
     {
         return $this->render('page/auth/login.html.twig');
     }
@@ -46,7 +46,6 @@ class AuthController extends AbstractController
                 return $this->redirect($this->generateUrl("app"));
             }
         }
-
         $this->addFlash("danger", "Incorrect credentials. Please try again!");
         return $this->redirect($this->generateUrl("auth.login"));
     }
@@ -72,7 +71,7 @@ class AuthController extends AbstractController
             $entityManagerInterface->flush();
 
             $this->addFlash("success", "You successfully created an account!");
-            
+
             $request->getSession()->set($_ENV["SESSION_COOKIE"], "test");
 
             return $this->redirect($this->generateUrl("app"));

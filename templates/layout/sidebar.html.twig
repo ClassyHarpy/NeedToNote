@@ -23,7 +23,7 @@
 							{% endfor %}
 						</ul>
 
-						<a href="{{ path("app.notes.add") }}"><img role="button" class="position-absolute m-2 bottom-0 end-0" src="/imgs/add.svg" loading="lazy" /></a>
+						<a href="{{ path("app.notes.add") }}"><img role="button" class="position-absolute m-2 bottom-0 end-0" src="/imgs/add.svg" loading="lazy"/></a>
 					</div>
 					<div class="sidebar-content-websites overflow-y-auto p-3">
 						<h5>Websites</h5>
@@ -36,9 +36,11 @@
 				</div>
 			{% endblock %}
 
+
 			{% block sidebar_bottom %}
+				{% set route = app.request.attributes.get('_route') %}
 				<div class="sidebar-bottom d-flex justify-content-center p-3">
-					<a href={{ path("app.calendar") }} class="btn btn-primary"><img src="/imgs/calendar.svg"></a>
+					<a href={{ route == "app.calendar" ? path("app") : path("app.calendar") }} class="btn btn-primary"><img src="/imgs/calendar.svg"></a>
 					<button id="showWatch" class="btn btn-primary"><img src="/imgs/stopwatch.svg"></button>
 				</div>
 			{% endblock %}
