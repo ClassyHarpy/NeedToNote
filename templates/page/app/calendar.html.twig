@@ -1,37 +1,39 @@
 {% extends "page/index.html.twig" %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js' defer></script>
+	{{ parent() }}
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js' defer></script>
+	<script type="text/javascript" src="{{ asset('js/component/Calendar.js') }}" defer></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const calendarEl = document.getElementById('calendar');
-          
-          const calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            selectable: true,
-            dateClick: (info) => {
-              const event =  { events: [
-                  {
-                    title: 'The Title',
-                    start: '2024-24-03',
-                    end: '2024-24-03'
-                  }
-                ]
-              };
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+const calendarEl = document.getElementById('calendar');
 
-              calendar.addEvent(event);
-            },
-            select: (info) => {
-            }
-          });
+const calendar = new FullCalendar.Calendar(calendarEl, {
+initialView: 'dayGridMonth',
+selectable: true,
+dateClick: (info) => {
+const event = {
+events: [
+{
+title: 'The Title',
+start: '2024-24-03',
+end: '2024-24-03'
+}
+]
+};
 
-         calendar.render();
-      });
-    </script>
+calendar.addEvent(event);
+},
+select: (info) => {}
+});
+
+calendar.render();
+});
+
+	</script>
 {% endblock %}
 
 {% block content %}
-  <div id="calendar" class="mh-100"></div>
+	<div id="calendar" class="mh-100"></div>
 {% endblock %}
