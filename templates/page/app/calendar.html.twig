@@ -5,33 +5,35 @@
 	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js' defer></script>
 	<script type="text/javascript" src="{{ asset('js/component/Calendar.js') }}" defer></script>
 
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-const calendarEl = document.getElementById('calendar');
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const calendarEl = document.getElementById('calendar');
 
-const calendar = new FullCalendar.Calendar(calendarEl, {
-initialView: 'dayGridMonth',
-selectable: true,
-dateClick: (info) => {
-const event = {
-events: [
-{
-title: 'The Title',
-start: '2024-24-03',
-end: '2024-24-03'
-}
-]
-};
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            selectable: true,
+            select: function(info) {
+                var title = prompt('Title:');
+                if (title) {
+                    calendar.addEvent({title: title, start: info.start, end: info.end, allDay: info.allDay});
+                }
+            },
+            dateClick: function(info) {
+                const event = {
+                    title: '',
+                    start: info.date,
+                    end: info.date
+                };
 
-calendar.addEvent(event);
-},
-select: (info) => {}
-});
+                calendar.addEvent(event);
+            }
+        });
 
-calendar.render();
-});
+        calendar.render();
+    });
+</script>
 
-	</script>
+
 {% endblock %}
 
 {% block content %}
