@@ -1,7 +1,7 @@
 {% extends "page/index.html.twig" %}
 
 {% block content %}
-	<form class="bg-black p-5 rounded text-white" method="post" action="{{ path("app.notes.add-submit") }}">
+	<form class="add-note bg-black p-5 rounded text-white" method="post" action="{{ path("app.notes.add-submit") }}">
 		<h2 class="text-center">Add note</h2>
 		<div class="form-group mb-3">
 			<input type="title" class="form-control" required id="title" name="title" placeholder="Enter a title..." max="32">
