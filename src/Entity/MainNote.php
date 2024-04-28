@@ -20,6 +20,9 @@ class MainNote
     #[ORM\OneToMany(targetEntity: SubNote::class, mappedBy: 'sub_note')]
     private Collection $subNotes;
 
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    private User $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,5 +62,25 @@ class MainNote
     public function setSubNotes(Collection $subNotes): void
     {
         $this->subNotes = $subNotes;
+    }
+
+    /**
+     * Get the value of user
+     */ 
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set the value of user
+     *
+     * @return  self
+     */ 
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

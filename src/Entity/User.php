@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -26,6 +27,8 @@ class User
     #[ORM\Column(length: 255)]
     private string $password = "";
 
+    #[ORM\OneToMany(targetEntity: MainNote::class, mappedBy: 'main_note')]
+    private Collection $mainNotes;
 
     /**
      * Set the value of id
@@ -114,5 +117,25 @@ class User
     public function setSurname($surname): void
     {
         $this->surname = $surname;
+    }
+
+    /**
+     * Get the value of mainNotes
+     */
+    public function getMainNotes()
+    {
+        return $this->mainNotes;
+    }
+
+    /**
+     * Set the value of mainNotes
+     *
+     * @return  self
+     */
+    public function setMainNotes($mainNotes)
+    {
+        $this->mainNotes = $mainNotes;
+
+        return $this;
     }
 }

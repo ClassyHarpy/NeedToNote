@@ -3,7 +3,7 @@
 		{% block sidebar_inner %}
 			{% block sidebar_top %}
 				<div class="sidebar-top p-3 border-bottom border-1">
-					<h4>{{ Context.user.name }}</h4>
+					<h4>{{ user.name }}</h4>
 					<div class="input-group d-flex">
 						<span class="input-group-text rounded-start" id="addon-wrapping"><img src="/imgs/search-symbol.png" alt="search" style="height: 15px; width: 15px;"></span>
 						<input type="text" class="form-control ml-2" placeholder="search" aria-label="Username" aria-describedby="addon-wrapping">
@@ -28,13 +28,14 @@
 					<div class="sidebar-content-websites overflow-y-auto p-3">
 						<h5 class="d-flex gap-2"><img src="/imgs/website.svg" loading="lazy"/>Websites</h5>
 						<div class="sidebar-links">
-							<ul class="sidebar-links">
-							//loop
+							<ul
+								class="sidebar-links">
+								{# loop #}
 								<li class="sidebar-link">
 									<h6>Test</h6>
 								</li>
-							
-						</ul>
+
+							</ul>
 						</div>
 					</div>
 				</div>

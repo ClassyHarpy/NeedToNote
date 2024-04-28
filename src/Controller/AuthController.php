@@ -41,7 +41,7 @@ class AuthController extends AbstractController
             if ($user) {
                 $this->addFlash("success", "You successfully logged into your account!");
 
-                $request->getSession()->set($_ENV["SESSION_COOKIE"], "test");
+                $request->getSession()->set($_ENV["SESSION_COOKIE"], $user->getId());
 
                 return $this->redirect($this->generateUrl("app"));
             }
@@ -72,7 +72,7 @@ class AuthController extends AbstractController
 
             $this->addFlash("success", "You successfully created an account!");
 
-            $request->getSession()->set($_ENV["SESSION_COOKIE"], "test");
+            $request->getSession()->set($_ENV["SESSION_COOKIE"], $user->getId());
 
             return $this->redirect($this->generateUrl("app"));
         } else {

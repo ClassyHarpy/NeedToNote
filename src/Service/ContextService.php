@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\User;
 use App\Entity\MainNote;
 
 class ContextService
@@ -11,12 +10,6 @@ class ContextService
 
     public function __construct(private readonly EntityManagerInterface $entityManager) {
 
-    }
-
-    public function user(): User|null
-    {
-        
-        return $this->entityManager->getRepository(User::class)->find(1);
     }
 
     /**
