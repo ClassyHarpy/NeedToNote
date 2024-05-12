@@ -8,14 +8,15 @@ use App\Entity\MainNote;
 class ContextService
 {
 
-    public function __construct(private readonly EntityManagerInterface $entityManager) {
-
+    public function __construct(private readonly EntityManagerInterface $entityManager)
+    {
     }
 
     /**
      * @return MainNote[]
      */
-    public function mainNotes(): array {
-        return $this->entityManager->getRepository(MainNote::class)->findAll();
+    public function mainNotes(int $userId): array
+    {
+        return $this->entityManager->getRepository(MainNote::class)->findBy(["user" => $userId]);
     }
 }

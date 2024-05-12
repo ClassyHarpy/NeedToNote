@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Calendar;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -67,7 +68,11 @@ class AuthController extends AbstractController
             $hash = hash("sha256", $password);
             $user->setPassword($hash);
 
+            $calendar = new Calendar();
+            $calendar->setUser($user);
+
             $entityManagerInterface->persist($user);
+            $entityManagerInterface->persist($calendar);
             $entityManagerInterface->flush();
 
             $this->addFlash("success", "You successfully created an account!");

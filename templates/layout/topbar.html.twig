@@ -1,3 +1,12 @@
 {% block topbar %}
-	<div id="topbar" class="component border-left-0 border-top-0 text-white">{{ routeName }}</div>
+	<div id="topbar" class="d-flex align-items-center px-3 component border-left-0 border-top-0 text-white">
+		<h3>
+			{% if routeName is defined %}
+				{{ routeName }}
+				{% if subNote.title is defined %}
+					: {{ subNote.title }}
+				{% endif %}
+			{% endif %}
+		</h3>
+	</div>
 {% endblock %}

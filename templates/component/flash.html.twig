@@ -13,12 +13,11 @@
 		</svg>
 	{% endblock %}
 
-	<div class="alert alert-{{ type }} d-flex align-items-center p-2 alert-dismissible fade show" role="alert">
-		<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#{{ type }}"/></svg>
-		<div class="w-100">
-			<h4 class="alert-heading">{{ type|upper }}</h4>
-			<p>{{ message }}</p>
-			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	<div class="alert alert-{{ type }} alert-dismissible d-flex align-items-center fade show" role="alert">
+		<svg class="bi flex-shrink-0 me-2" height="24px" width="24px" role="img"><use xlink:href="#{{ type }}"/></svg>
+		<div>
+			{{ message }}
 		</div>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 {% endblock %}

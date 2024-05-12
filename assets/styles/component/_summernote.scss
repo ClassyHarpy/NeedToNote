@@ -1,0 +1,19 @@
+.note-editor {
+    height: 100%;
+
+    .note-editable {
+        background-color: white !important;
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        border-radius: 3px;
+    }
+    
+    .note-editing-area {
+        height: inherit;
+        max-height: calc(100% - (1rem + 43.4px - 15px));
+    }
+
+    .note-statusbar {
+        display: none !important;
+    }
+}
