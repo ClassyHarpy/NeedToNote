@@ -3,7 +3,8 @@
 {% block main_classes %}d-flex align-items-center justify-content-center{% endblock %}
 
 {% block content %}
-	<form class="add-note bg-dark border border-1 p-5 rounded" method="post" action="{{ path("app.notes.add-submit") }}" style="max-width: 550px">
+	<form class="add-note bg-dark border border-1 p-5 rounded position-relative" method="post" action="{{ path("app.notes.add-submit") }}" style="max-width: 550px">
+		<a class="position-absolute top-0 end-0 m-2" href="{{ path("app") }}"><img src="/imgs/close.svg" alt="" /></a>
 		<h2 class="text-center">Add note</h2>
 		<div class="form-group mb-3">
 			<input type="title" class="form-control" required id="title" name="title" placeholder="Enter a title..." max="32">

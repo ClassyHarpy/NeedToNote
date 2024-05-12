@@ -56,6 +56,24 @@ class AppController extends AbstractController
         }, $request);
     }
 
+    #[Route('/calendar/delete/{id}', name: 'app.calendar.delete', methods: ["PATCH"])]
+    public function calendar_delete(Request $request, EntityManagerInterface $entityManagerInterface, string $id): Response
+    {
+        return $this->guardService->Guard(function (User $user) use ($entityManagerInterface, $id) {
+            $calendar = $user->getCalendar();
+
+            $calendar->setData(array_values(array_filter($calendar->getData(), function (array $event) use ($id) {
+                return $event["id"] !== $id;
+            })));
+
+            $entityManagerInterface->persist($calendar);
+            $entityManagerInterface->flush();
+
+            return new Response();
+        }, $request);
+    }
+
+
     #[Route('/notes/add', name: 'app.notes.add', methods: ["GET"])]
     public function addNotePage(Request $request,): Response
     {
@@ -138,7 +156,7 @@ class AppController extends AbstractController
 
                 $entityManagerInterface->remove($main_note);
                 $entityManagerInterface->flush();
-        
+
                 $this->addFlash("success", "Notebook deleted successfully!");
             } else {
                 $this->addFlash("success", "Something went wrong while trying to delete the notebook...");

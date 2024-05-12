@@ -8,10 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = prompt('Title:');
 
             if (title) {
-                const event = { title, start: info.start, end: info.end, allDay: info.allDay }
+                const event = { id: window?.crypto?.randomUUID().substring(0, 10), title, start: info.start, end: info.end, allDay: info.allDay };
 
                 calendar.addEvent(event);
                 save(event);
+            }
+        },
+        eventClick: (clickInfo) => {
+            if (confirm("Are you sure you want to delete this event?")) {
+                clickInfo.event.remove();
+                deleteEvent(clickInfo.event.id);
             }
         }
     });
@@ -29,6 +35,11 @@ function loadEvents(calendar, events) {
 
 function save(event) {
     fetch(`${location.pathname}/save`, { method: "POST", body: JSON.stringify({ event }) }).then(() => {
+    });
+}
+
+function deleteEvent(id) {
+    fetch(`${location.pathname}/delete/${id}`, { method: "PATCH" }).then(() => {
         // TODO
-    })
+    });
 }

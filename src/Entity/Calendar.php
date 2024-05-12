@@ -27,7 +27,7 @@ class Calendar
     /**
      * Get the value of data
      */
-    public function getData()
+    public function getData(): array
     {
         return $this->data;
     }
