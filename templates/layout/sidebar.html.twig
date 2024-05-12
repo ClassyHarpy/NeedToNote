@@ -1,5 +1,5 @@
 {% block sidebar %}
-	<div id="sidebar" class="d-flex flex-column component border-top-0">
+	<div id="sidebar" class="d-flex flex-column bg-dark border border-top-0">
 		{% block sidebar_inner %}
 			{% block sidebar_top %}
 				<div class="sidebar-top p-3 border-bottom border-1">
@@ -22,7 +22,7 @@
 						<ul class="sidebar-links">
 							{% for mainNote in Context.mainNotes(user.id) %}
 								<li class="sidebar-link">
-									<h6>{{ mainNote.title }}</h6>
+									<h6>{{ mainNote.title }} <a href="{{ path("app.mainNote.delete", { id: mainNote.id }) }}"><img src="/imgs/bin.svg" alt="" /><a/></h6>
 
 									{% for note in mainNote.subNotes %}
 										<h6><a href="{{ path("app.note", { id: note.id }) }}">{{ note.title }}</a></h6>

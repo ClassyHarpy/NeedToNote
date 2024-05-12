@@ -13,26 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 calendar.addEvent(event);
                 save(event);
             }
-        },
-        dateClick: (info) => {
-            const event = {
-                title: '',
-                start: info.date,
-                end: info.date
-            };
-
-            calendar.addEvent(event);
         }
     });
 
     calendar.render();
 
-    loadEvents(calendar, JSON.parse(calendarEl.dataset.events).event);
+    loadEvents(calendar, JSON.parse(calendarEl.dataset.events));
 });
 
 function loadEvents(calendar, events) {
-    calendar.addEvent(events);
-  //  events.forEach();
+    events.forEach((event) =>
+        calendar.addEvent(event)
+    );
 }
 
 function save(event) {

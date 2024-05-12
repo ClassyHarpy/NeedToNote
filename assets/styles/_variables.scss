@@ -1,0 +1,19 @@
+$dark: #202020;
+$border-color: #545454;
+$primary: #6262cf;
+$secondary: #ad5ef8;
+$body-color: white;
+$body-secondary-color: #8c8c8c;
+
+:root {
+    --fc-event-bg-color: #{$primary};
+    --fc-border-color: #a1a0ab;
+    --fc-event-border-color: #{$border-color};
+    --fc-button-bg-color: #{$primary};
+    --fc-today-bg-color: rgb(158 75 230 / 14%);
+    --fc-highlight-color: rgb(61 61 61 / 60%);
+}
+
+.form-control {
+    color: $dark !important;
+}

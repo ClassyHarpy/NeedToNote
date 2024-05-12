@@ -1,4 +1,11 @@
 #auth {
     height: inherit;
-    grid-template-columns: minmax(350px, .4fr) 1fr;
+    grid-template-columns: minmax(400px, .4fr) 1fr;
+
+    .bg-img {
+        background-image: url('/imgs/auth_bg.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
 }

@@ -24,7 +24,7 @@
 		{% include 'layout/sidebar.html.twig' %}
 		{% include 'component/stopwatch.html.twig' %}
 
-		<div id="main" class="p-3">
+		<div id="main" class="p-3 {% block main_classes %}{% endblock %}">
 			{% block content %}{% endblock %}
 		</div>
 	</div>

@@ -42,8 +42,8 @@ class AppController extends AbstractController
         return $this->guardService->Guard(function (User $user) use ($request, $entityManagerInterface) {
             $event = json_decode($request->getContent(), true);
 
-            if ($event) {
-                $user->getCalendar()->setData($event);
+            if (isset($event["event"])) {
+                $user->getCalendar()->appenData($event["event"]);
 
                 $entityManagerInterface->persist($user->getCalendar());
                 $entityManagerInterface->flush();
@@ -51,7 +51,7 @@ class AppController extends AbstractController
                 return new Response();
             }
 
-            $this->addFlash("warning", "Sorry buddy, 404 :(");
+            $this->addFlash("warning", "An error occurred, please try again");
             return $this->redirect($this->generateUrl("app.calendar"));
         }, $request);
     }
@@ -75,7 +75,7 @@ class AppController extends AbstractController
                 return $this->render('page/app/notes/note.html.twig', ["routeName" => "Note", "user" => $user, "subNote" => $sub_note]);
             }
 
-            $this->addFlash("warning", "Sorry buddy, 404 :(");
+            $this->addFlash("warning", "An error occurred, please try again");
             return $this->redirect($this->generateUrl("app"));
         }, $request);
     }
@@ -97,8 +97,54 @@ class AppController extends AbstractController
                 return new Response();
             }
 
-            $this->addFlash("warning", "Sorry buddy, 404 :(");
+            $this->addFlash("warning", "An error occurred, please try again");
             return $this->redirect($this->generateUrl("app.note", ["id" => $id]));
+        }, $request);
+    }
+
+    #[Route('/note/{id}/delete', name: 'app.note.delete')]
+    public function deleteNote(Request $request, EntityManagerInterface  $entityManagerInterface, int $id): Response
+    {
+        return $this->guardService->Guard(function () use ($id, $entityManagerInterface) {
+            $repository = $entityManagerInterface->getRepository(SubNote::class);
+            $sub_note = $repository->findOneBy(["id" => $id]);
+
+            if ($sub_note) {
+                $entityManagerInterface->remove($sub_note);
+                $entityManagerInterface->flush();
+
+                $this->addFlash("success", "Note deleted successfully!");
+            } else {
+                $this->addFlash("success", "Something went wrong while trying to delete the note...");
+            }
+
+            return $this->redirect($this->generateUrl("app"));
+        }, $request);
+    }
+
+    #[Route('/mainNote/{id}/delete', name: 'app.mainNote.delete')]
+    public function deleteMainNote(Request $request, EntityManagerInterface  $entityManagerInterface, int $id): Response
+    {
+        return $this->guardService->Guard(function () use ($id, $entityManagerInterface) {
+            $repository = $entityManagerInterface->getRepository(MainNote::class);
+            $main_note = $repository->findOneBy(["id" => $id]);
+
+            if ($main_note) {
+                $sql = "DELETE FROM sub_note WHERE main_note_id = $id";
+
+                $conn = $entityManagerInterface->getConnection();
+                $stmt = $conn->prepare($sql);
+                $stmt->executeQuery();
+
+                $entityManagerInterface->remove($main_note);
+                $entityManagerInterface->flush();
+        
+                $this->addFlash("success", "Notebook deleted successfully!");
+            } else {
+                $this->addFlash("success", "Something went wrong while trying to delete the notebook...");
+            }
+
+            return $this->redirect($this->generateUrl("app"));
         }, $request);
     }
 

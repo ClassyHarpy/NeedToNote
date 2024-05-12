@@ -26,7 +26,7 @@ class Calendar
 
     /**
      * Get the value of data
-     */ 
+     */
     public function getData()
     {
         return $this->data;
@@ -35,18 +35,20 @@ class Calendar
     /**
      * Set the value of data
      *
-     * @return  self
-     */ 
-    public function setData($data)
+     */
+    public function setData(array $data)
     {
         $this->data = $data;
+    }
 
-        return $this;
+    public function appenData(array $data)
+    {
+        $this->data = [...$this->data, $data];
     }
 
     /**
      * Get the value of user
-     */ 
+     */
     public function getUser()
     {
         return $this->user;
@@ -56,7 +58,7 @@ class Calendar
      * Set the value of user
      *
      * @return  self
-     */ 
+     */
     public function setUser($user)
     {
         $this->user = $user;

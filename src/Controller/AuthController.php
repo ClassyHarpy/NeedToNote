@@ -85,4 +85,12 @@ class AuthController extends AbstractController
             return $this->redirect($this->generateUrl("auth.register"));
         }
     }
+
+    #[Route('/logout', name: 'auth.logout')]
+    public function logout(Request $request) {
+        $request->getSession()->remove($_ENV["SESSION_COOKIE"]);
+
+        $this->addFlash("info", "Logged out successfully!");
+        return $this->redirect($this->generateUrl("auth.login"));
+    }
 }

@@ -1,15 +1,14 @@
 @import "variables";
 @import "../../vendor/twbs/bootstrap/scss/bootstrap.scss";
-@import "global";
-
-:root {
-    --bs-heading-color: #ecf0f1;
-    --borders: #4f4949;
-}
 
 body {
     height: 100vh;
     margin: 0;
     padding: 0;
     width: 100vw;
+}
+
+.form-control::placeholder,
+.form-control::-ms-input-placeholder {
+    color: red !important;
 }

@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block auth_content %}
-	<form class="auth bg-black p-5 rounded text-white " method="post" action="{{ path("auth.login.submit") }}">
-		<h2 class="text-center">Sign in</h2>
+	<form class="auth bg-dark border border-1 p-5 rounded " method="post" action="{{ path("auth.login.submit") }}" style="max-width: 400px">
+		<h2 class="text-center text-primary">Sign In</h2>
 		<div class="form-group pt-2">
 			<label for="email">Email address</label>
 			<input type="email" class="form-control" required id="email" name="email" placeholder="Type your email">
@@ -19,7 +19,7 @@
 			<input type="password" class="form-control" required name="password" id="password" placeholder="Type your password">
 		</div>
 		<div class="text-center mt-3">
-		<button type="submit" class="btn btn-primary">Login</button>
+		<button type="submit" class="btn btn-primary w-100">Login</button>
 		</div>
 	</form>
 {% endblock %}

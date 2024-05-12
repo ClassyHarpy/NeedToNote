@@ -1,6 +1,6 @@
 {% block topbar %}
-	<div id="topbar" class="d-flex align-items-center px-3 component border-left-0 border-top-0 text-white">
-		<h3>
+	<div id="topbar" class="d-flex align-items-center px-3 bg-dark border border-start-0 border-top-0">
+		<h3 class="text-primary">
 			{% if routeName is defined %}
 				{{ routeName }}
 				{% if subNote.title is defined %}
@@ -8,5 +8,11 @@
 				{% endif %}
 			{% endif %}
 		</h3>
+
+		{% if routeName == "Note" %}
+			<a class="btn btn-danger ms-auto" href={{ path("app.note.delete", { id: subNote.id } ) }}>Delete note</a>
+		{% endif %}
+		
+		<a class="btn btn-primary {% if routeName == "Note" %}ms-3{% else %}ms-auto{% endif %}" href={{ path("auth.logout") }}>Logout</a>
 	</div>
 {% endblock %}

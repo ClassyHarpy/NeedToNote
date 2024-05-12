@@ -1,12 +1,14 @@
 {% extends "page/index.html.twig" %}
 
+{% block main_classes %}d-flex align-items-center justify-content-center{% endblock %}
+
 {% block content %}
-	<form class="add-note bg-black p-5 rounded text-white" method="post" action="{{ path("app.notes.add-submit") }}">
+	<form class="add-note bg-dark border border-1 p-5 rounded" method="post" action="{{ path("app.notes.add-submit") }}" style="max-width: 550px">
 		<h2 class="text-center">Add note</h2>
 		<div class="form-group mb-3">
 			<input type="title" class="form-control" required id="title" name="title" placeholder="Enter a title..." max="32">
 		</div>
 		{% include 'component/select-search.html.twig' %}
-		<button type="submit" class="btn btn-primary">Add</button>
+		<button type="submit" class="btn btn-primary mt-3 w-100">Add</button>
 	</form>
 {% endblock %}

@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block auth_content %}
-	<form class="auth bg-black p-5 rounded text-white" method="post" action="{{ path("auth.register.submit") }}">
-		<h2 class="text-center">Sign up</h2>
+	<form class="auth bg-dark border border-1 p-5 rounded" method="post" action="{{ path("auth.register.submit") }}" style="max-width: 400px">
+		<h2 class="text-center text-primary">Sign Up</h2>
 
 		<div class="form-group pt-2">
 			<label for="name">Name</label>
@@ -32,7 +32,7 @@
 			<input type="password" class="form-control" name="password" id="password" required placeholder="Type your password">
 		</div>
 		<div class="text-center pt-3">
-		<button type="submit" class="btn btn-primary">Register</button>
+		<button type="submit" class="btn btn-primary w-100">Register</button>
 		</div>
 	</form>
 {% endblock %}
