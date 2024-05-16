@@ -3,9 +3,9 @@
 
     .sidebar-content {
         flex: 1;
+        max-height: 750px;
 
-        .sidebar-content-notebooks,
-        .sidebar-content-websites {
+        .sidebar-content-notebooks {
             flex: inherit;
         }
     }

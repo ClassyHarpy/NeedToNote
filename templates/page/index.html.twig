@@ -5,7 +5,6 @@
 	<link rel="stylesheet" href="{{ asset('styles/component/_select-search.scss') }}">
 	<link rel="stylesheet" href="{{ asset('styles/component/_add-note.scss') }}">
 	<link rel="stylesheet" href="{{ asset('styles/component/_stopwatch.scss') }}">
-	<link rel="stylesheet" href="{{ asset('styles/component/_calendar.scss') }}">
 	<link rel="stylesheet" href="{{ asset('styles/layout/_topbar.scss') }}">
 	<link rel="stylesheet" href="{{ asset('styles/layout/_sidebar.scss') }}">
 	<link rel="stylesheet" href="{{ asset('styles/index/_index.scss') }}">
@@ -13,9 +12,8 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	<script type="text/javascript" src="{{ asset('js/component/Stopwatch.js') }}" defer></script>
+	<script type="text/javascript" src="{{ asset('js/component/stopwatch.js') }}" defer></script>
 	<script type="text/javascript" src="{{ asset('js/component/selectSearch.js') }}" defer></script>
-	<script type="text/javascript" src="{{ asset('js/component/Calendar.js') }}" defer></script>
 {% endblock %}
 
 {% block body %}
@@ -25,7 +23,8 @@
 		{% include 'component/stopwatch.html.twig' %}
 
 		<div id="main" class="p-3 {% block main_classes %}{% endblock %}">
-			{% block content %}{% endblock %}
+			{% block content %}
+			{% endblock %}
 		</div>
 	</div>
 {% endblock %}

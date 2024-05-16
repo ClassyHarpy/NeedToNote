@@ -2,49 +2,46 @@
 	<div id="sidebar" class="d-flex flex-column bg-dark border border-top-0">
 		{% block sidebar_inner %}
 			{% block sidebar_top %}
-				<div class="sidebar-top p-3 border-bottom border-1">
-					<a href="{{ path("app") }}" class="fs-2 fw-bold text-decoration-none">Need to note</a>
-					<div class="d-flex align-items-center p-1 bg-white rounded mb-2">
-						<img class="border-right border-1 bg-body-tertiary" src="/imgs/user.svg" alt="" />
-						<h4 class="text-dark mb-0">{{ user.name }}<h4/>
+				<div class="sidebar-top p-3 border-bottom border-1 align-items-center d-flex" style="height: 9%;">
+					<div class="d-flex align-items-center p-1 bg-white rounded w-100 ">
+						<img class="border-right border-1 bg-body-tertiary" src="/imgs/user.svg" alt=""/>
+						<a href={{ path("auth.logout")}}>
+							<h4 class="text-dark mb-0">{{ user.name }}<h4/></a>
+						</div>
 					</div>
-					<div class="input-group d-flex">
-						<span class="input-group-text rounded-start" id="addon-wrapping"><img src="/imgs/search-symbol.png" alt="search" style="height: 15px; width: 15px;"></span>
-						<input type="text" class="form-control ml-2" placeholder="search" aria-label="Username" aria-describedby="addon-wrapping">
-					</div>
-				</div>
-			{% endblock %}
+				{% endblock %}
 
-			{% block sidebar_content %}
-				<div class="sidebar-content d-flex flex-column border-bottom border-1">
-					<div class="sidebar-content-notebooks overflow-y-auto position-relative p-3">
-						<h5 class="d-flex gap-2"><img src="/imgs/notebook.svg" loading="lazy"/>Notebooks</h5>
-						<ul class="sidebar-links">
-							{% for mainNote in Context.mainNotes(user.id) %}
-								<li class="sidebar-link">
-									<h6>{{ mainNote.title }} <a href="{{ path("app.mainNote.delete", { id: mainNote.id }) }}"><img src="/imgs/bin.svg" alt="" /><a/></h6>
+				{% block sidebar_content %}
+					<div class="sidebar-content d-flex flex-column border-bottom border-1">
+						<div class="sidebar-content-notebooks overflow-y-auto position-relative p-3">
+							<h5 class="d-flex gap-2"><img src="/imgs/notebook.svg" loading="lazy"/>Notebooks</h5>
+							<ul class="sidebar-links">
+								{% for mainNote in Context.mainNotes(user.id) %}
+									<li class="sidebar-link">
+										<h6>{{ mainNote.title }}
+											<a class="delete-note" href="{{ path("app.mainNote.delete", { id: mainNote.id }) }}"><img src="/imgs/bin.svg" alt=""/><a/>
+										</h6>
 
-									{% for note in mainNote.subNotes %}
-										<h6><a href="{{ path("app.note", { id: note.id }) }}">{{ note.title }}</a></h6>
+										{% for note in mainNote.subNotes %}
+											<h6>
+												<a href="{{ path("app.note", { id: note.id }) }}">{{ note.title }}</a>
+											</h6>
+										{% endfor %}
+										</li>
 									{% endfor %}
-								</li>
-							{% endfor %}
-						</ul>
+								</ul>
+								<a href="{{ path("app.notes.add") }}"><img role="button" class="align-self-end justify-self-end" src="/imgs/add.svg" loading="lazy"/></a>
+							</div>
+						</div>
+					{% endblock %}
 
-						<a href="{{ path("app.notes.add") }}"><img role="button" class="position-absolute m-2 bottom-0 end-0" src="/imgs/add.svg" loading="lazy"/></a>
-					</div>
-
-				</div>
-			{% endblock %}
-
-
-			{% block sidebar_bottom %}
-				{% set route = app.request.attributes.get('_route') %}
-				<div class="sidebar-bottom d-flex justify-content-center p-3">
-					<a href={{ route == "app.calendar" ? path("app") : path("app.calendar") }} class="btn btn-primary"><img src="/imgs/calendar.svg"></a>
-					<button id="showWatch" class="btn btn-primary"><img src="/imgs/stopwatch.svg"></button>
-				</div>
-			{% endblock %}
+					{% block sidebar_bottom %}
+						{% set route = app.request.attributes.get('_route') %}
+						<div class="sidebar-bottom d-flex justify-content-center p-3">
+							<a href={{ route == "app.calendar" ? path("app") : path("app.calendar") }} class="btn btn-primary"><img src="/imgs/calendar.svg"></a>
+							<button id="showWatch" class="btn btn-primary"><img src="/imgs/stopwatch.svg"></button>
+						</div>
+					{% endblock %}
+				{% endblock %}
+			</div>
 		{% endblock %}
-	</div>
-{% endblock %}

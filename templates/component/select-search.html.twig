@@ -7,7 +7,7 @@
 		<div class="select-search-content overflow-x-auto p-2 pt-3 pb-0 bg-white mt-1 rounded-1 d-none">
 			<input type="title" class="select-search-input form-control mb-2" placeholder="Search...">
 			<div class="select-search-items">
-				<h6 data-select-not-found="{{ path("app.notes.add-main") }}" class="select-search-item text-black m-0 fw-light d-none mb-2 p-2 rounded">Create note "<span>:(</span>"</h6>
+				<h6 data-select-not-found="{{ path("app.notes.add-main") }}" class="select-search-item text-black m-0 fw-light d-none mb-2 p-2 rounded">Create notebook "<span>:(</span>"</h6>
 				<div class="select-search-items-inner">
 					{% for note in Context.mainNotes(user.id) %}
 						<h6 data-select-id={{ note.id }} class="select-search-item fw-light text-black p-2 rounded">{{ note.title }}</h6>
